@@ -19,9 +19,9 @@ import shradha.com.asteroidroom.domain.ViewModelFactory
 class MainActivity : AppCompatActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-        setContentView(R.layout.activity_main)
-        val imageDetailScreen: ImageView = findViewById(R.id.imageDetailScreen)
-        val recyclerView: RecyclerView = findViewById(R.id.recyclerView)
+        setContentView(R.layout.fragment_main)
+     /*   val imageDetailScreen: ImageView = findViewById(R.id.imageDetailScreen)
+        val recyclerView: RecyclerView = findViewById(R.id.recyclerViewInDetailScreen)
         val asteroidViewModel: AsteroidViewModel by viewModels {
             ViewModelFactory((application as MyApplication).repo)
         }
@@ -56,6 +56,8 @@ class MainActivity : AppCompatActivity() {
             }
 
         })
+
+      */
     }
 
 
