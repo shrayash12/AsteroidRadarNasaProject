@@ -10,48 +10,79 @@ import androidx.activity.viewModels
 import androidx.databinding.DataBindingUtil
 import androidx.fragment.app.viewModels
 import androidx.lifecycle.Observer
+import androidx.navigation.Navigation
 import androidx.recyclerview.widget.LinearLayoutManager
-import androidx.recyclerview.widget.RecyclerView
 import com.bumptech.glide.Glide
-import kotlinx.android.synthetic.main.fragment_main.*
 import shradha.com.asteroidroom.R
+import shradha.com.asteroidroom.data.Asteroid
 import shradha.com.asteroidroom.databinding.FragmentMainBinding
 import shradha.com.asteroidroom.domain.AsteroidAdapter
 import shradha.com.asteroidroom.domain.AsteroidViewModel
+import shradha.com.asteroidroom.domain.OnAsteroidItemClickListener
 import shradha.com.asteroidroom.domain.ViewModelFactory
 
-class MainFragment : Fragment() {
+class MainFragment : Fragment(), OnAsteroidItemClickListener {
 
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?
-    ): View? {
+    ): View {
         val binding: FragmentMainBinding = DataBindingUtil.inflate(
             inflater,
-            R.id.action_mainFragment_to_detailFragment,
+            R.layout.fragment_main,
             container,
             false
         )
+        
         val asteroidViewModel: AsteroidViewModel by viewModels {
             ViewModelFactory((activity?.application as MyApplication).repo)
         }
-/*        val asteroidAdapter = AsteroidAdapter()
-        recyclerViewInMainScreen.adapter = asteroidAdapter
-        recyclerViewInMainScreen.layoutManager = LinearLayoutManager(requireActivity())
+
+        asteroidViewModel.insertAsteroid(
+            asteroid = Asteroid(
+                2,
+                "Asteroid Codename",
+                "2021-07-29",
+                23.99040,
+                44.3893,
+                4550.2,
+                110.00,
+                false,
+                "https://apod.nasa.gov/apod/image/2107/AM0644-741Full1024.jpg"
+            )
+        )
+        
+        asteroidViewModel.getAsteroidFromRepo()
+        val asteroidAdapter = AsteroidAdapter()
+        asteroidAdapter.setOnAsteroidItemClickListener(this)
+        binding.recyclerViewInMainScreen.adapter = asteroidAdapter
+        binding.recyclerViewInMainScreen.layoutManager = LinearLayoutManager(requireActivity())
         asteroidViewModel.getAsteroidFromRepo()
         asteroidViewModel.liveData.observe(requireActivity(), Observer {
             asteroidAdapter.submitList(it)
-        })*/
+        })
         asteroidViewModel.livedataForImage.observe(requireActivity(), Observer {
             Log.d("MainFragment", it.url)
             if (it.url.isNotBlank()) {
+
                 Glide
                     .with(this)
                     .load(it.hdurl)
                     .centerCrop()
                     .into(binding.imageMainScreen)
             }
+            else{
+                binding.imageMainScreen.setImageResource(R.drawable.asteroid_default)
+            }
         })
         return binding.root
+    }
+
+    override fun onAsteroidItemClick(asteroid: Asteroid) {
+        val bundle  = Bundle()
+        bundle.putParcelable("asteroid",asteroid)
+       Navigation.
+       findNavController(requireView())
+           .navigate(R.id.action_mainFragment_to_detailFragment,bundle)
     }
 }
