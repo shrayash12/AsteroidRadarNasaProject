@@ -1,9 +1,6 @@
 package shradha.com.asteroidroom.domain
 
-import androidx.lifecycle.LiveData
-import androidx.lifecycle.MutableLiveData
-import androidx.lifecycle.ViewModel
-import androidx.lifecycle.viewModelScope
+import androidx.lifecycle.*
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.launch
 import shradha.com.asteroidroom.data.Asteroid
@@ -16,7 +13,7 @@ class AsteroidViewModel(private val asteroidRepository: AsteroidRepository) : Vi
 
     //For Asteroid Image
     private val mutableLiveDataForImage = MutableLiveData<AsteroidImageResponse>()
-    val livedataForImage: LiveData<AsteroidImageResponse> get() = mutableLiveDataForImage
+    val liveDataForImage: LiveData<AsteroidImageResponse> get() = mutableLiveDataForImage
 
     fun getAsteroidFromRepo() {
         viewModelScope.launch(Dispatchers.IO) {
@@ -25,12 +22,6 @@ class AsteroidViewModel(private val asteroidRepository: AsteroidRepository) : Vi
 
             val imageResponse = asteroidRepository.getAsteroidImages()
             mutableLiveDataForImage.postValue(imageResponse)
-        }
-    }
-
-    fun insertAsteroid(asteroid: Asteroid) {
-        viewModelScope.launch(Dispatchers.IO) {
-            asteroidRepository.insertAsteroid(asteroid)
         }
     }
 

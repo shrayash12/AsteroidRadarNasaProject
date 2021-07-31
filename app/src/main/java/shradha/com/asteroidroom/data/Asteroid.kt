@@ -1,9 +1,12 @@
 package shradha.com.asteroidroom.data
 
+import android.os.Parcelable
 import androidx.room.Entity
 import androidx.room.PrimaryKey
+import kotlinx.android.parcel.Parcelize
 
 @Entity(tableName = "AsteroidTable")
+@Parcelize
 data class Asteroid(
     @PrimaryKey
     val id: Long,
@@ -13,5 +16,6 @@ data class Asteroid(
     val estimatedDiameter: Double,
     val relativeVelocity: Double,
     val distanceFromEarth: Double,
-    val isPotentiallyHazardous: Boolean
-)
+    val isPotentiallyHazardous: Boolean,
+    val url: String
+): Parcelable

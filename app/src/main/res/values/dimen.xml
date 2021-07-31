@@ -1,0 +1,9 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <dimen name="margin_left_title">8dp</dimen>
+    <dimen name="margin_top_title">20dp</dimen>
+    <dimen name="margin_left">8dp</dimen>
+    <dimen name="margin_top">5dp</dimen>
+    <dimen name="margin_bottom">20dp</dimen>
+    <dimen name="image_height">300dp</dimen>
+</resources>

@@ -1,5 +1,12 @@
 <resources>
     <string name="app_name">AsteroidRoom</string>
-    <!-- TODO: Remove or change this placeholder text -->
     <string name="hello_blank_fragment">Hello blank fragment</string>
+    <string name="close_approach_date">Close approach date</string>
+    <string name="absolute_magnitude_title">Absolute magnitudeTitle</string>
+    <string name="estimated_diameter">Estimated diameter</string>
+    <string name="relative_velocity">Relative velocity</string>
+    <string name="distance_from_earth">tvDistance from earth</string>
+    <string name="image_of_the_day">Image of the day</string>
+    <string name="image_in_main_screen">Image In Main Screen</string>
+    <string name="image_in_detail_screen">Image In Detail Screen</string>
 </resources>

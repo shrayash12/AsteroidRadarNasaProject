@@ -6,15 +6,19 @@ import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
-import androidx.activity.viewModels
 import androidx.databinding.DataBindingUtil
 import androidx.fragment.app.viewModels
 import androidx.lifecycle.Observer
 import androidx.navigation.Navigation
 import androidx.recyclerview.widget.LinearLayoutManager
+import androidx.work.Constraints
+import androidx.work.NetworkType
+import androidx.work.PeriodicWorkRequestBuilder
+import androidx.work.WorkManager
 import com.bumptech.glide.Glide
 import shradha.com.asteroidroom.R
 import shradha.com.asteroidroom.data.Asteroid
+import shradha.com.asteroidroom.data.AsteroidWorker
 import shradha.com.asteroidroom.databinding.FragmentMainBinding
 import shradha.com.asteroidroom.domain.AsteroidAdapter
 import shradha.com.asteroidroom.domain.AsteroidViewModel
@@ -22,6 +26,19 @@ import shradha.com.asteroidroom.domain.OnAsteroidItemClickListener
 import shradha.com.asteroidroom.domain.ViewModelFactory
 
 class MainFragment : Fragment(), OnAsteroidItemClickListener {
+    override fun onCreate(savedInstanceState: Bundle?) {
+        super.onCreate(savedInstanceState)
+        val constraints = Constraints.Builder()
+            .setRequiredNetworkType(NetworkType.CONNECTED)
+            .build()
+
+        val saveRequests =
+            PeriodicWorkRequestBuilder<AsteroidWorker>(1, java.util.concurrent.TimeUnit.SECONDS)
+                .setConstraints(constraints)
+                .build()
+        WorkManager.getInstance(requireActivity())
+            .enqueue(saveRequests)
+    }
 
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
@@ -33,25 +50,12 @@ class MainFragment : Fragment(), OnAsteroidItemClickListener {
             container,
             false
         )
-        
+
         val asteroidViewModel: AsteroidViewModel by viewModels {
             ViewModelFactory((activity?.application as MyApplication).repo)
         }
 
-        asteroidViewModel.insertAsteroid(
-            asteroid = Asteroid(
-                2,
-                "Asteroid Codename",
-                "2021-07-29",
-                23.99040,
-                44.3893,
-                4550.2,
-                110.00,
-                false,
-                "https://apod.nasa.gov/apod/image/2107/AM0644-741Full1024.jpg"
-            )
-        )
-        
+
         asteroidViewModel.getAsteroidFromRepo()
         val asteroidAdapter = AsteroidAdapter()
         asteroidAdapter.setOnAsteroidItemClickListener(this)
@@ -61,7 +65,7 @@ class MainFragment : Fragment(), OnAsteroidItemClickListener {
         asteroidViewModel.liveData.observe(requireActivity(), Observer {
             asteroidAdapter.submitList(it)
         })
-        asteroidViewModel.livedataForImage.observe(requireActivity(), Observer {
+        asteroidViewModel.liveDataForImage.observe(requireActivity(), Observer {
             Log.d("MainFragment", it.url)
             if (it.url.isNotBlank()) {
 
@@ -70,8 +74,7 @@ class MainFragment : Fragment(), OnAsteroidItemClickListener {
                     .load(it.hdurl)
                     .centerCrop()
                     .into(binding.imageMainScreen)
-            }
-            else{
+            } else {
                 binding.imageMainScreen.setImageResource(R.drawable.asteroid_default)
             }
         })
@@ -79,10 +82,11 @@ class MainFragment : Fragment(), OnAsteroidItemClickListener {
     }
 
     override fun onAsteroidItemClick(asteroid: Asteroid) {
-        val bundle  = Bundle()
-        bundle.putParcelable("asteroid",asteroid)
-       Navigation.
-       findNavController(requireView())
-           .navigate(R.id.action_mainFragment_to_detailFragment,bundle)
+        val bundle = Bundle()
+        bundle.putParcelable("asteroid", asteroid)
+        Navigation.findNavController(requireView())
+            .navigate(R.id.action_mainFragment_to_detailFragment, bundle)
     }
+
+
 }

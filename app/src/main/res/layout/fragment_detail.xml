@@ -1,40 +1,147 @@
 <?xml version="1.0" encoding="utf-8"?>
-<layout>
+<layout xmlns:android="http://schemas.android.com/apk/res/android">
 
-    <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    <LinearLayout xmlns:app="http://schemas.android.com/apk/res-auto"
         xmlns:tools="http://schemas.android.com/tools"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
+        android:background="@color/black"
         android:orientation="vertical">
 
         <com.google.android.material.card.MaterialCardView
-            android:id="@+id/cardViewDetailScreen"
+            android:id="@+id/cardViewMainScreen"
             android:layout_width="match_parent"
-            android:layout_height="300dp">
+            android:layout_height="@dimen/image_height">
 
             <ImageView
                 android:id="@+id/imageDetailScreen"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
+                android:contentDescription="@string/image_in_detail_screen"
                 android:scaleType="centerCrop" />
 
             <TextView
-                android:id="@+id/tvImageOfTheDayDetailScreen"
+                android:id="@+id/tvIsHazardous"
+                style="@style/IsHazardousText"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_gravity="bottom"
-                android:layout_marginBottom="20dp"
+                android:layout_marginBottom="@dimen/margin_bottom"
                 android:gravity="center"
-                android:text="Image of the day"
-                android:textColor="#000000"
-                android:textSize="20sp" />
+                tools:text="Image of the day" />
 
         </com.google.android.material.card.MaterialCardView>
 
-        <androidx.recyclerview.widget.RecyclerView
-            android:id="@+id/recyclerViewInDetailScreen"
+        <TextView
+            android:id="@+id/tvCloseApproachDateTitle"
+            style="@style/TextStyle"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="@dimen/margin_left_title"
+            android:layout_marginTop="@dimen/margin_top_title"
+            android:text="@string/close_approach_date" />
+
+        <TextView
+            android:id="@+id/tvCloseApproachDate"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="@dimen/margin_left"
+            android:layout_marginTop="@dimen/margin_top"
+            android:textColor="@color/white"
+            tools:text="CloseApproachDate" />
+
+        <RelativeLayout
             android:layout_width="match_parent"
-            android:layout_height="match_parent"
-            tools:listitem="@layout/list_item" />
+            android:layout_height="wrap_content"
+            android:layout_marginTop="@dimen/margin_top_title">
+
+            <TextView
+                android:id="@+id/tvAbsoluteMagnitudeTitle"
+                style="@style/TextStyle"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="@dimen/margin_left_title"
+                android:text="@string/absolute_magnitude_title"
+                />
+
+            <TextView
+                android:id="@+id/tvAbsoluteMagnitude"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="@dimen/margin_left"
+                android:layout_marginTop="@dimen/margin_top"
+                android:textColor="@color/white"
+                tools:text="AbsoluteMagnitude"
+                android:layout_below="@id/tvAbsoluteMagnitudeTitle"/>
+
+            <ImageView
+                android:id="@+id/imageAbsoluteMagnitude"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_below="@+id/tvAbsoluteMagnitudeTitle"
+                android:layout_above="@+id/tvAbsoluteMagnitude"
+                android:layout_alignParentEnd="true"
+                android:layout_marginEnd="50dp"
+                android:src="@drawable/ic_contact_support"
+                />
+        </RelativeLayout>
+
+
+
+        <TextView
+            android:id="@+id/tvEstimatedDiameterTitle"
+            style="@style/TextStyle"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="@dimen/margin_left_title"
+            android:layout_marginTop="@dimen/margin_top_title"
+            android:text="@string/estimated_diameter"/>
+
+        <TextView
+            android:id="@+id/tvEstimatedDiameter"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="@dimen/margin_left"
+            android:layout_marginTop="@dimen/margin_top"
+            android:textColor="@color/white"
+            tools:text="EstimatedDiameter" />
+
+        <TextView
+            android:id="@+id/tvRelativeVelocityTitle"
+            style="@style/TextStyle"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="@dimen/margin_left_title"
+            android:layout_marginTop="@dimen/margin_top_title"
+            android:text="@string/relative_velocity"
+            app:layout_constraintStart_toStartOf="parent"/>
+
+        <TextView
+            android:id="@+id/tvRelativeVelocity"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="@dimen/margin_left"
+            android:layout_marginTop="@dimen/margin_top"
+            android:textColor="@color/white"
+            tools:text="RelativeVelocity" />
+
+        <TextView
+            android:id="@+id/tvDistanceFromEarthTitle"
+            style="@style/TextStyle"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="@dimen/margin_left_title"
+            android:layout_marginTop="@dimen/margin_top_title"
+            android:text="@string/distance_from_earth"
+             />
+
+        <TextView
+            android:id="@+id/tvDistanceFromEarth"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="@dimen/margin_left"
+            android:layout_marginTop="@dimen/margin_top"
+            android:textColor="@color/white"
+            tools:text="Distance from earth" />
     </LinearLayout>
 </layout>
