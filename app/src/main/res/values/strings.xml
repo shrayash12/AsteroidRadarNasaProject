@@ -9,4 +9,17 @@
     <string name="image_of_the_day">Image of the day</string>
     <string name="image_in_main_screen">Image In Main Screen</string>
     <string name="image_in_detail_screen">Image In Detail Screen</string>
+    <string name="potentially_hazardous_description">This asteroid is potentially hazardous</string>
+    <string name="potentially_non_hazardous_description">This asteroid is potentially non hazardous</string>
+    <string name="magnitude_info">Information about magnitude description</string>
+
+    <string name="dialog_text">ACEPTAR</string>
+    <string name="dialog_message"> "The astronomical unit(au) is unit of length" +
+                        ",roughly the distance from the Earth to Sun and equal to about 150 million kilo meters" +
+                        "(93 million miles)"</string>
+    <string name="closeApproachDate">CloseApproachDate</string>
+    <string name="distanceFromEarth">DistanceFromEarth</string>
+    <string name="relativeVelocity">RelativeVelocity</string>
+    <string name="estimatedDiameter">EstimatedDiameter</string>
+    <string name="absoluteMagnitude">AbsoluteMagnitude</string>
 </resources>

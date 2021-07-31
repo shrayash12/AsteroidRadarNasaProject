@@ -10,16 +10,16 @@ import shradha.com.asteroidroom.util.Utility
 
 
 class AsteroidRepository(private val asteroidDao: AsteroidDao) {
-   suspend fun getAllAsteroid(): List<Asteroid> = asteroidDao.getAsteroid()
-     fun insertAsteroid(asteroid: List<Asteroid>) {
-        asteroidDao.insertAsteroid(asteroid)
+    fun getAllAsteroid(): Flow<List<Asteroid>> = asteroidDao.getAsteroid()
+    fun insertAsteroid(asteroid: List<Asteroid>): List<Long> {
+        return asteroidDao.insertAsteroid(asteroid)
     }
 
     suspend fun getAsteroidImages(): AsteroidImageResponse {
         return MyImageApi.createImageService().getAsteroidImages(Constants.API_KEY_FOR_IMAGE)
     }
 
-     fun getAsteroidData(): Call<String> {
+    fun getAsteroidData(): Call<String> {
         return MyApi.getServiceForAsteroid()
             .getAsteroidResponse(Utility.getToday(), Utility.getSeventhDay(), Constants.API_KEY)
     }

@@ -6,7 +6,6 @@
     android:layout_height="wrap_content"
     android:background="@color/black">
 
-
     <TextView
         android:id="@+id/tvCodeName"
         style="@style/TextStyle"

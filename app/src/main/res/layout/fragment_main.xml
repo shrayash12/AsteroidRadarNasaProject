@@ -16,9 +16,8 @@
                 android:id="@+id/imageMainScreen"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:contentDescription="@string/image_in_main_screen"
                 android:scaleType="centerCrop"
-                android:visibility="visible"/>
+                android:visibility="visible" />
 
             <TextView
                 android:id="@+id/tvImageOfTheDayMainScreen"
@@ -26,8 +25,9 @@
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_gravity="bottom"
+                android:layout_marginLeft="@dimen/margin_left"
                 android:layout_marginBottom="@dimen/margin_bottom"
-                android:gravity="center"
+                android:gravity="left"
                 android:text="@string/image_of_the_day" />
         </com.google.android.material.card.MaterialCardView>
 

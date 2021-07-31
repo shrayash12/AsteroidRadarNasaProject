@@ -8,8 +8,7 @@ import shradha.com.asteroidroom.data.AsteroidImageResponse
 import shradha.com.asteroidroom.data.AsteroidRepository
 
 class AsteroidViewModel(private val asteroidRepository: AsteroidRepository) : ViewModel() {
-    private val mutableLiveData = MutableLiveData<List<Asteroid>>()
-    val liveData: MutableLiveData<List<Asteroid>> get() = mutableLiveData
+    val liveData: LiveData<List<Asteroid>> = asteroidRepository.getAllAsteroid().asLiveData()
 
     //For Asteroid Image
     private val mutableLiveDataForImage = MutableLiveData<AsteroidImageResponse>()
@@ -17,9 +16,6 @@ class AsteroidViewModel(private val asteroidRepository: AsteroidRepository) : Vi
 
     fun getAsteroidFromRepo() {
         viewModelScope.launch(Dispatchers.IO) {
-            val data = asteroidRepository.getAllAsteroid()
-            mutableLiveData.postValue(data)
-
             val imageResponse = asteroidRepository.getAsteroidImages()
             mutableLiveDataForImage.postValue(imageResponse)
         }

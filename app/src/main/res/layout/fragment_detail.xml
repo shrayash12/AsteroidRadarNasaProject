@@ -17,7 +17,6 @@
                 android:id="@+id/imageDetailScreen"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:contentDescription="@string/image_in_detail_screen"
                 android:scaleType="centerCrop" />
 
         </com.google.android.material.card.MaterialCardView>
@@ -29,6 +28,7 @@
             android:layout_height="wrap_content"
             android:layout_marginStart="@dimen/margin_left_title"
             android:layout_marginTop="@dimen/margin_top_title"
+            android:contentDescription="@string/closeApproachDate"
             android:text="@string/close_approach_date" />
 
         <TextView
@@ -51,6 +51,7 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_marginStart="@dimen/margin_left_title"
+                android:contentDescription="@string/absoluteMagnitude"
                 android:text="@string/absolute_magnitude_title" />
 
             <TextView
@@ -81,6 +82,7 @@
             android:layout_height="wrap_content"
             android:layout_marginStart="@dimen/margin_left_title"
             android:layout_marginTop="@dimen/margin_top_title"
+            android:contentDescription="@string/estimatedDiameter"
             android:text="@string/estimated_diameter" />
 
         <TextView
@@ -99,6 +101,7 @@
             android:layout_height="wrap_content"
             android:layout_marginStart="@dimen/margin_left_title"
             android:layout_marginTop="@dimen/margin_top_title"
+            android:contentDescription="@string/relativeVelocity"
             android:text="@string/relative_velocity"
             app:layout_constraintStart_toStartOf="parent" />
 
@@ -118,6 +121,7 @@
             android:layout_height="wrap_content"
             android:layout_marginStart="@dimen/margin_left_title"
             android:layout_marginTop="@dimen/margin_top_title"
+            android:contentDescription="@string/distanceFromEarth"
             android:text="@string/distance_from_earth" />
 
         <TextView

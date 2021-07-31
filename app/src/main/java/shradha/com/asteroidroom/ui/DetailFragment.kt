@@ -1,7 +1,5 @@
 package shradha.com.asteroidroom.ui
 
-import android.app.Dialog
-import android.content.DialogInterface
 import android.os.Bundle
 import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
@@ -39,6 +37,8 @@ class DetailFragment : Fragment() {
                     R.drawable.asteroid_hazardous
                 )
             )
+            binding.imageDetailScreen.contentDescription =
+                resources.getString(R.string.potentially_hazardous_description)
         } else {
             binding.imageDetailScreen.setImageDrawable(
                 ContextCompat.getDrawable(
@@ -46,16 +46,20 @@ class DetailFragment : Fragment() {
                     R.drawable.asteroid_safe
                 )
             )
+            binding.imageDetailScreen.contentDescription =
+                resources.getString(R.string.potentially_non_hazardous_description)
         }
 
         binding.imageAbsoluteMagnitude.setOnClickListener {
             val builder = AlertDialog.Builder(requireContext())
-            builder.setMessage("Display Something")
-            builder.setNegativeButton("Aceptar") { dialog, _ ->
+            builder.setMessage(resources.getString(R.string.dialog_message))
+            builder.setNegativeButton(resources.getString(R.string.dialog_text)) { dialog, _ ->
                 dialog.dismiss()
             }
             builder.show()
         }
+        binding.imageAbsoluteMagnitude.contentDescription =
+            resources.getString(R.string.magnitude_info)
         return binding.root
     }
 

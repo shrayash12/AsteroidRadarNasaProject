@@ -1,7 +1,7 @@
 package shradha.com.asteroidroom.data
 
-import androidx.lifecycle.LiveData
 import androidx.room.*
+import kotlinx.coroutines.flow.Flow
 
 @Dao
 interface AsteroidDao {
@@ -12,10 +12,10 @@ interface AsteroidDao {
     }
 
     @Insert(onConflict = OnConflictStrategy.IGNORE)
-     fun insertAsteroid(asteroid: List<Asteroid>)
+    fun insertAsteroid(asteroid: List<Asteroid>): List<Long>
 
     @Query("SELECT * from AsteroidTable ORDER By closeApproachDate")
-    suspend fun getAsteroid(): List<Asteroid>
+    fun getAsteroid(): Flow<List<Asteroid>>
 
     @Query("DELETE from AsteroidTable")
     fun deleteAll()

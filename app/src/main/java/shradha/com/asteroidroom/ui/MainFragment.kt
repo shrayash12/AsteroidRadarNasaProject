@@ -9,6 +9,7 @@ import android.view.ViewGroup
 import androidx.databinding.DataBindingUtil
 import androidx.fragment.app.viewModels
 import androidx.lifecycle.Observer
+import androidx.lifecycle.lifecycleScope
 import androidx.navigation.Navigation
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.work.Constraints
@@ -24,6 +25,7 @@ import shradha.com.asteroidroom.domain.AsteroidAdapter
 import shradha.com.asteroidroom.domain.AsteroidViewModel
 import shradha.com.asteroidroom.domain.OnAsteroidItemClickListener
 import shradha.com.asteroidroom.domain.ViewModelFactory
+import java.util.concurrent.TimeUnit.*
 
 class MainFragment : Fragment(), OnAsteroidItemClickListener {
     override fun onCreate(savedInstanceState: Bundle?) {
@@ -33,7 +35,7 @@ class MainFragment : Fragment(), OnAsteroidItemClickListener {
             .build()
 
         val saveRequests =
-            PeriodicWorkRequestBuilder<AsteroidWorker>(1, java.util.concurrent.TimeUnit.SECONDS)
+            PeriodicWorkRequestBuilder<AsteroidWorker>(1, DAYS)
                 .setConstraints(constraints)
                 .build()
         WorkManager.getInstance(requireActivity())
@@ -60,9 +62,11 @@ class MainFragment : Fragment(), OnAsteroidItemClickListener {
         binding.recyclerViewInMainScreen.adapter = asteroidAdapter
         binding.recyclerViewInMainScreen.layoutManager = LinearLayoutManager(requireActivity())
         asteroidViewModel.getAsteroidFromRepo()
-        asteroidViewModel.liveData.observe(requireActivity(), Observer {
-            asteroidAdapter.submitList(it)
-        })
+        lifecycleScope.launchWhenStarted {
+            asteroidViewModel.liveData.observe(requireActivity(), Observer {
+                asteroidAdapter.submitList(it)
+            })
+        }
         asteroidViewModel.liveDataForImage.observe(requireActivity(), Observer {
             Log.d("MainFragment", it.url)
             if (it.url.isNotBlank()) {
