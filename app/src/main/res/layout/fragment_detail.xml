@@ -20,16 +20,6 @@
                 android:contentDescription="@string/image_in_detail_screen"
                 android:scaleType="centerCrop" />
 
-            <TextView
-                android:id="@+id/tvIsHazardous"
-                style="@style/IsHazardousText"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:layout_gravity="bottom"
-                android:layout_marginBottom="@dimen/margin_bottom"
-                android:gravity="center"
-                tools:text="Image of the day" />
-
         </com.google.android.material.card.MaterialCardView>
 
         <TextView
@@ -61,31 +51,28 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_marginStart="@dimen/margin_left_title"
-                android:text="@string/absolute_magnitude_title"
-                />
+                android:text="@string/absolute_magnitude_title" />
 
             <TextView
                 android:id="@+id/tvAbsoluteMagnitude"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
+                android:layout_below="@id/tvAbsoluteMagnitudeTitle"
                 android:layout_marginStart="@dimen/margin_left"
                 android:layout_marginTop="@dimen/margin_top"
                 android:textColor="@color/white"
-                tools:text="AbsoluteMagnitude"
-                android:layout_below="@id/tvAbsoluteMagnitudeTitle"/>
+                tools:text="AbsoluteMagnitude" />
 
             <ImageView
                 android:id="@+id/imageAbsoluteMagnitude"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:layout_below="@+id/tvAbsoluteMagnitudeTitle"
                 android:layout_above="@+id/tvAbsoluteMagnitude"
+                android:layout_below="@+id/tvAbsoluteMagnitudeTitle"
                 android:layout_alignParentEnd="true"
                 android:layout_marginEnd="50dp"
-                android:src="@drawable/ic_contact_support"
-                />
+                android:src="@drawable/ic_contact_support" />
         </RelativeLayout>
-
 
 
         <TextView
@@ -95,7 +82,7 @@
             android:layout_height="wrap_content"
             android:layout_marginStart="@dimen/margin_left_title"
             android:layout_marginTop="@dimen/margin_top_title"
-            android:text="@string/estimated_diameter"/>
+            android:text="@string/estimated_diameter" />
 
         <TextView
             android:id="@+id/tvEstimatedDiameter"
@@ -114,7 +101,7 @@
             android:layout_marginStart="@dimen/margin_left_title"
             android:layout_marginTop="@dimen/margin_top_title"
             android:text="@string/relative_velocity"
-            app:layout_constraintStart_toStartOf="parent"/>
+            app:layout_constraintStart_toStartOf="parent" />
 
         <TextView
             android:id="@+id/tvRelativeVelocity"
@@ -132,8 +119,7 @@
             android:layout_height="wrap_content"
             android:layout_marginStart="@dimen/margin_left_title"
             android:layout_marginTop="@dimen/margin_top_title"
-            android:text="@string/distance_from_earth"
-             />
+            android:text="@string/distance_from_earth" />
 
         <TextView
             android:id="@+id/tvDistanceFromEarth"

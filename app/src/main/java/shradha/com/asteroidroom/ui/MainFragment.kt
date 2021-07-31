@@ -52,7 +52,7 @@ class MainFragment : Fragment(), OnAsteroidItemClickListener {
         )
 
         val asteroidViewModel: AsteroidViewModel by viewModels {
-            ViewModelFactory((activity?.application as MyApplication).repo)
+            ViewModelFactory((activity?.application as AsteroidApplication).repo)
         }
 
 

@@ -18,7 +18,7 @@
                 android:layout_height="wrap_content"
                 android:contentDescription="@string/image_in_main_screen"
                 android:scaleType="centerCrop"
-                android:src="@drawable/asteroid_default"
+                android:src="@drawable/placeholder"
                 android:visibility="visible"/>
 
             <TextView

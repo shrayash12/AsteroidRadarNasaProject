@@ -6,8 +6,7 @@ import kotlinx.coroutines.SupervisorJob
 import shradha.com.asteroidroom.data.AsteroidDatabase
 import shradha.com.asteroidroom.data.AsteroidRepository
 
-class MyApplication : Application() {
-    val applicationScope: CoroutineScope = CoroutineScope(SupervisorJob())
+class AsteroidApplication : Application() {
     private val db by lazy { AsteroidDatabase.getAsteroidDatabase(this) }
     val repo by lazy { AsteroidRepository(db.asteroidDao()) }
 }
