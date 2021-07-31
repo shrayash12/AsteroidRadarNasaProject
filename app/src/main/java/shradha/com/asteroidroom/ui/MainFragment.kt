@@ -50,11 +50,9 @@ class MainFragment : Fragment(), OnAsteroidItemClickListener {
             container,
             false
         )
-
         val asteroidViewModel: AsteroidViewModel by viewModels {
             ViewModelFactory((activity?.application as AsteroidApplication).repo)
         }
-
 
         asteroidViewModel.getAsteroidFromRepo()
         val asteroidAdapter = AsteroidAdapter()
@@ -88,6 +86,4 @@ class MainFragment : Fragment(), OnAsteroidItemClickListener {
         Navigation.findNavController(requireView())
             .navigate(R.id.action_mainFragment_to_detailFragment, bundle)
     }
-
-
 }

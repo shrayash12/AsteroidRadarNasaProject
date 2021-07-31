@@ -20,8 +20,6 @@ class AsteroidAdapter :
         private val tvCodeName = itemView.findViewById<TextView>(R.id.tvCodeName)
         private val tvDate = itemView.findViewById<TextView>(R.id.tvDate)
         private val smileyImage = itemView.findViewById<ImageView>(R.id.smileyImage)
-        private val imageAbsoluteMagnitude =
-            itemView.findViewById<ImageView>(R.id.imageAbsoluteMagnitude)
 
         fun bind(asteroid: Asteroid) {
             tvCodeName.text = asteroid.codename
@@ -62,7 +60,6 @@ class AsteroidAdapter :
         this.onAsteroidItemClickListener = onAsteroidItemClickListener
     }
 }
-
 
 interface OnAsteroidItemClickListener {
     fun onAsteroidItemClick(asteroid: Asteroid)

@@ -1,5 +1,7 @@
 package shradha.com.asteroidroom.ui
 
+import android.app.Dialog
+import android.content.DialogInterface
 import android.os.Bundle
 import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
@@ -49,6 +51,9 @@ class DetailFragment : Fragment() {
         binding.imageAbsoluteMagnitude.setOnClickListener {
             val builder = AlertDialog.Builder(requireContext())
             builder.setMessage("Display Something")
+            builder.setNegativeButton("Aceptar") { dialog, _ ->
+                dialog.dismiss()
+            }
             builder.show()
         }
         return binding.root
