@@ -73,6 +73,7 @@ class MainFragment : Fragment(), OnAsteroidItemClickListener {
                     .with(this)
                     .load(it.hdurl)
                     .centerCrop()
+                    .placeholder(R.drawable.placeholder)
                     .into(binding.imageMainScreen)
             } else {
                 binding.imageMainScreen.setImageResource(R.drawable.asteroid_default)

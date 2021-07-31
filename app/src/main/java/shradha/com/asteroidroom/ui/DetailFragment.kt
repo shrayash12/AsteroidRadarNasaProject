@@ -5,6 +5,7 @@ import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import androidx.appcompat.app.AlertDialog
 import androidx.core.content.ContextCompat
 import androidx.databinding.DataBindingUtil
 import shradha.com.asteroidroom.R
@@ -43,6 +44,12 @@ class DetailFragment : Fragment() {
                     R.drawable.asteroid_safe
                 )
             )
+        }
+
+        binding.imageAbsoluteMagnitude.setOnClickListener {
+            val builder = AlertDialog.Builder(requireContext())
+            builder.setMessage("Display Something")
+            builder.show()
         }
         return binding.root
     }

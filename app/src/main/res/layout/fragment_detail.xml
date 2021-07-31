@@ -63,15 +63,14 @@
                 android:textColor="@color/white"
                 tools:text="AbsoluteMagnitude" />
 
-            <ImageView
+            <androidx.appcompat.widget.AppCompatImageView
                 android:id="@+id/imageAbsoluteMagnitude"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_above="@+id/tvAbsoluteMagnitude"
-                android:layout_below="@+id/tvAbsoluteMagnitudeTitle"
+                android:layout_width="24dp"
+                android:layout_height="24dp"
                 android:layout_alignParentEnd="true"
+                android:layout_centerInParent="true"
                 android:layout_marginEnd="50dp"
-                android:src="@drawable/ic_contact_support" />
+                android:src="@drawable/ic_baseline_contact_support" />
         </RelativeLayout>
 
 
