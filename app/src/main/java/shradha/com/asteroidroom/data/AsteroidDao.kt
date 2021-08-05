@@ -20,3 +20,4 @@ interface AsteroidDao {
     @Query("DELETE from AsteroidTable")
     fun deleteAll()
 }
+
