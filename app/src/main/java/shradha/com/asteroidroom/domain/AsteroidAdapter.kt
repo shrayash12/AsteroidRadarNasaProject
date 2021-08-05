@@ -26,8 +26,13 @@ class AsteroidAdapter :
             tvDate.text = asteroid.closeApproachDate
             if (asteroid.isPotentiallyHazardous) {
                 smileyImage.setImageResource(R.drawable.ic_hazardous_face_foreground)
+                smileyImage.contentDescription =
+                    R.string.potentially_hazardous_description.toString()
             } else {
                 smileyImage.setImageResource(R.drawable.ic_smiley_face_foreground)
+                smileyImage.contentDescription =
+                    R.string.potentially_non_hazardous_description.toString()
+
             }
         }
 
