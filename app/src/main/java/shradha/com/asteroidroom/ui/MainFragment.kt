@@ -32,6 +32,7 @@ class MainFragment : Fragment(), OnAsteroidItemClickListener {
         super.onCreate(savedInstanceState)
         val constraints = Constraints.Builder()
             .setRequiredNetworkType(NetworkType.CONNECTED)
+            .setRequiresCharging(true)
             .build()
 
         val saveRequests =
