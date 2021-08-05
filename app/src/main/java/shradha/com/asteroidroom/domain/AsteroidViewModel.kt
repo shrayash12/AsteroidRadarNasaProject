@@ -16,8 +16,14 @@ class AsteroidViewModel(private val asteroidRepository: AsteroidRepository) : Vi
 
     fun getAsteroidFromRepo() {
         viewModelScope.launch(Dispatchers.IO) {
-            val imageResponse = asteroidRepository.getAsteroidImages()
-            mutableLiveDataForImage.postValue(imageResponse)
+            try {
+                val imageResponse = asteroidRepository.getAsteroidImages()
+                mutableLiveDataForImage.postValue(imageResponse)
+            }
+            catch (e:Exception){
+                e.printStackTrace()
+            }
+
         }
     }
 
