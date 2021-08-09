@@ -31,8 +31,8 @@ class MainFragment : Fragment(), OnAsteroidItemClickListener {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         val constraints = Constraints.Builder()
+            .setRequiresBatteryNotLow(true)
             .setRequiredNetworkType(NetworkType.CONNECTED)
-            .setRequiresCharging(true)
             .build()
 
         val saveRequests =
