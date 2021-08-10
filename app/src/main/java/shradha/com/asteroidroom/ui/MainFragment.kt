@@ -31,7 +31,7 @@ class MainFragment : Fragment(), OnAsteroidItemClickListener {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         val constraints = Constraints.Builder()
-            .setRequiresBatteryNotLow(true)
+            .setRequiresCharging(true)
             .setRequiredNetworkType(NetworkType.CONNECTED)
             .build()
 
@@ -63,6 +63,7 @@ class MainFragment : Fragment(), OnAsteroidItemClickListener {
         binding.recyclerViewInMainScreen.adapter = asteroidAdapter
         binding.recyclerViewInMainScreen.layoutManager = LinearLayoutManager(requireActivity())
         asteroidViewModel.getAsteroidFromRepo()
+
         lifecycleScope.launchWhenStarted {
             asteroidViewModel.liveData.observe(requireActivity(), Observer {
                 asteroidAdapter.submitList(it)
