@@ -17,6 +17,7 @@ import androidx.work.NetworkType
 import androidx.work.PeriodicWorkRequestBuilder
 import androidx.work.WorkManager
 import com.bumptech.glide.Glide
+import kotlinx.android.synthetic.main.fragment_main.*
 import shradha.com.asteroidroom.R
 import shradha.com.asteroidroom.data.Asteroid
 import shradha.com.asteroidroom.data.AsteroidWorker
@@ -71,6 +72,11 @@ class MainFragment : Fragment(), OnAsteroidItemClickListener {
         }
         asteroidViewModel.liveDataForImage.observe(requireActivity(), Observer {
             Log.d("MainFragment", it.url)
+
+            if (it.title.isNotBlank()) {
+                binding.tvImageOfTheDayMainScreen.text = it.title
+                binding.tvImageOfTheDayMainScreen.contentDescription = it.explanation
+            }
             if (it.url.isNotBlank()) {
 
                 Glide
